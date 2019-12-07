@@ -1,0 +1,15 @@
+@border-color: #dadce0;
+
+.border-bottom(@color: @border-color) {
+    position: relative;
+    &:after {
+        content: "";
+        height: 1px;
+        position: absolute;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background: @color;
+        box-sizing: border-box;
+    }
+}
