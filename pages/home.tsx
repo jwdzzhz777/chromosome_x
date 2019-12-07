@@ -1,8 +1,13 @@
 import { NextPage } from 'next';
+import 'styles/pages/home.less';
 
-const Home: NextPage<{ userAgent: string }> = ({ userAgent }) => <h1>Hello world! - user agent: {userAgent}</h1>;
+const Home: NextPage<{ userAgent: string }> = ({ userAgent }) => (
+    <div>
+        <p>Hello world! - user agent: {userAgent}</p>
+    </div>
+);
 
-Home.getInitialProps = async ({ req }) => {
+Home.getInitialProps = async ({req}) => {
     const userAgent = req ? req.headers['user-agent'] : navigator.userAgent;
     return { userAgent };
 };
