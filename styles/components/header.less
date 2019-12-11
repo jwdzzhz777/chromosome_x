@@ -1,8 +1,74 @@
 @import '../mixin.less';
 
-.banner {
-    height: 128px;
+.co-header {
     width: 100%;
-
     .border-bottom();
+    &::after {
+        bottom: inherit;
+        top: 134px;
+        z-index: -1;
+    }
+    .banner {
+        height: 64px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .MuiContainer-root {
+        display: flex;
+        align-items: flex-end;
+    }
+    .avatar {
+        width: 160px;
+        height: 160px;
+        border: .5rem solid #fff;
+        box-shadow: 0px 0px 4px #eee;
+        img {
+            float: right;
+        }
+    }
+    .info {
+        margin-left: 20px;
+        height: 80px;
+    }
+    @media (max-width: 960px) {
+        &::after {
+            top: 108px;
+        }
+        .banner {
+            height: 48px;
+        }
+        .avatar {
+            width: 130px;
+            height: 130px;
+        }
+        .info {
+            height: 65px;
+        }
+        .MuiContainer-root {
+            padding-left: 48px;
+            padding-right: 48px;
+        }
+    }
+    @media (max-width: 600px) {
+        &::after {
+            top: 80px;
+        }
+        .banner {
+            height: 32px;
+        }
+        .avatar {
+            width: 100px;
+            height: 100px;
+        }
+        .info {
+            height: 50px;
+            .MuiTypography-body1 {
+                font-size: 1.2rem;
+            }
+        }
+        .MuiContainer-root {
+            padding-left: 32px;
+            padding-right: 32px;
+        }
+    }
 }

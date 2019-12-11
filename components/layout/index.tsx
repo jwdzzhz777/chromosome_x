@@ -2,7 +2,8 @@ import React from 'react';
 import Meta from './meta';
 import Header from './header';
 import { UserInfo } from 'types';
-import Snackbar from '@material-ui/core/Snackbar';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { Snackbar, Container } from '@material-ui/core';
 
 export default class Layout extends React.Component<{viewer?: UserInfo, error?: string}, any> {
     constructor(props: {viewer?: UserInfo, error?: string}) {
@@ -38,11 +39,20 @@ export default class Layout extends React.Component<{viewer?: UserInfo, error?: 
     render() {
         const { children, viewer } = this.props;
         const { snakeBar } = this.state;
+
+        const theme = createMuiTheme({
+            typography: {
+                htmlFontSize: 10,
+            },
+        });
+
         return (
-            <>
+            <ThemeProvider theme={theme}>
                 <Meta/>
                 <Header viewer={viewer}/>
-                {children}
+                <Container>
+                    {children}
+                </Container>
                 <Snackbar
                     anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
                     autoHideDuration={1500}
@@ -58,7 +68,7 @@ export default class Layout extends React.Component<{viewer?: UserInfo, error?: 
                         }
                     }
                 `}</style>
-            </>
+            </ThemeProvider>
         )
     }
 }

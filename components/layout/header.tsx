@@ -1,13 +1,40 @@
 import React from 'react';
-import 'styles/components/header.less';
 import { UserInfo } from 'types';
+import { Avatar, Container, Typography } from '@material-ui/core';
+import 'styles/components/header.less';
 
-export default class Header extends React.Component<{viewer: UserInfo}> {
+export default class Header extends React.Component<{viewer: UserInfo}, {avatar: string}> {
+    constructor(props: {viewer: UserInfo}) {
+        super(props);
+        this.state = {avatar: props.viewer.a_s}
+    }
+    componentDidMount() {
+        let { viewer } = this.props;
+        if (!viewer) return;
+
+        let img = new Image();
+        img.onload = () => {
+            this.setState({avatar: viewer.avatarUrl});
+        }
+        img.src = viewer.avatarUrl;
+    }
     render() {
+        let { viewer } = this.props;
         return (
-            <>
-                <div className="banner"></div>
-            </>
+            <div className="co-header">
+                <div className="banner">
+                <></>
+                <Typography>blog</Typography>
+                <></>
+                </div>
+                <Container>
+                    <Avatar className="avatar" srcSet={this.state.avatar}></Avatar>
+                    <div className="info">
+                        <Typography>{viewer.name}</Typography>
+                        <Typography>{viewer.bio}</Typography>
+                    </div>
+                </Container>
+            </div>
         )
     }
 }
