@@ -13,3 +13,17 @@
         box-sizing: border-box;
     }
 }
+
+.border-top(@color: @border-color) {
+    position: relative;
+    &:before {
+        content: "";
+        height: 1px;
+        position: absolute;
+        right: 0;
+        left: 0;
+        top: 0;
+        background: @color;
+        box-sizing: border-box;
+    }
+}

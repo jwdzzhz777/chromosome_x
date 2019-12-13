@@ -1,0 +1,21 @@
+@import '../mixin.less';
+
+.co-list-item {
+    display: block;
+    padding: 2rem 0;
+    text-decoration: none;
+    cursor: pointer;
+    .border-top();
+    &:focus {
+        background-color: #f1f3f4;
+    }
+    .time {
+        margin-bottom: 10px;
+    }
+    .time,
+    .title {
+        color: #414141;
+        line-height: 1.4;
+        font-weight: normal;;
+    }
+}
