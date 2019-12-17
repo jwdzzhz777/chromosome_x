@@ -19,13 +19,13 @@ export default class Header extends React.Component<{viewer: UserInfo}, {avatar:
         img.src = viewer.avatarUrl;
     }
     render() {
-        let { viewer } = this.props;
+        let { viewer } = this.props as any;
         return (
             <div className="co-header">
                 <div className="banner">
-                <></>
-                <Typography>blog</Typography>
-                <></>
+                    <div></div>
+                    <Typography>blog</Typography>
+                    <div></div>
                 </div>
                 <Container>
                     <Avatar className="avatar" srcSet={this.state.avatar}></Avatar>
