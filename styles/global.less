@@ -2,8 +2,25 @@ body {
     background-color: #fff;
     color: #000;
     margin: 0;
+
+    .MuiTypography-body1 {
+        font-size: 1.2rem;
+    }
 }
 
 html {
-    font-size: 62.5%; /* 62.5% of 16px = 10px */
+    font-size: 100%; /* 62.5% of 16px = 10px */
+}
+
+@media (max-width: 960px) {
+    html {
+        font-size: 87.5%;
+    }
+
+}
+@media (max-width: 600px) {
+    html {
+        font-size: 62.5%;
+    }
+
 }
