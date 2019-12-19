@@ -24,7 +24,7 @@ const Article: NextPage<{ article: ArticleContext }> = ({ article }) => {
     );
 }
 Article.getInitialProps = async ({ query }): Promise<{ article: ArticleContext }> => {
-    let article = await fetch(`${ARTICLE}?number=${query.number}`);
+    let [article] = await fetch(`${ARTICLE}?number=${query.number}`);
     return { article };
 };
 

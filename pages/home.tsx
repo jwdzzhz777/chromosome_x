@@ -20,8 +20,8 @@ const Home: NextPage<{ articles: ArticleType[] }> = ({ articles }) => {
 };
 
 Home.getInitialProps = async (): Promise<{articles: ArticleType[]}> => {
-    let articles = await fetch(ARTICLE_LIST);
-    return { articles };
+    let [articles] = await fetch(ARTICLE_LIST);
+    return { articles: articles || [] };
 };
 
 export default Home;

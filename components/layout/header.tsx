@@ -6,7 +6,7 @@ import 'styles/components/header.less';
 export default class Header extends React.Component<{viewer: UserInfo}, {avatar: string}> {
     constructor(props: {viewer: UserInfo}) {
         super(props);
-        this.state = {avatar: props.viewer.a_s}
+        this.state = {avatar: props.viewer ? props.viewer.a_s : ''}
     }
     componentDidMount() {
         let { viewer } = this.props;
@@ -29,10 +29,12 @@ export default class Header extends React.Component<{viewer: UserInfo}, {avatar:
                 </div>
                 <Container>
                     <Avatar className="avatar" srcSet={this.state.avatar}></Avatar>
-                    <div className="info">
-                        <Typography>{viewer.name}</Typography>
-                        <Typography>{viewer.bio}</Typography>
-                    </div>
+                    {
+                        viewer && <div className="info">
+                            <Typography>{viewer.name}</Typography>
+                            <Typography>{viewer.bio}</Typography>
+                        </div>
+                    }
                 </Container>
             </div>
         )
