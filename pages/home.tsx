@@ -11,7 +11,7 @@ const Home: NextPage<{ articles: ArticleType[] }> = ({ articles }) => {
         (
             <div className="pg-home">
                 <div className="head">
-                    <Typography variant="h5">All ArticleTypes</Typography>
+                    <Typography variant="h5">All Articles</Typography>
                 </div>
                 {list}
             </div>
