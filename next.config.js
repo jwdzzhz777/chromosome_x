@@ -1,7 +1,7 @@
 // next.config.js is not transformed by Babel. So you can only use javascript features supported by your version of Node.js.
 const withLess = require('@zeit/next-less');
 const withCSS = require('@zeit/next-css')
-var path = require('path');
+const path = require('path');
 const config = require('./config');
 
 const resolve = (dir) => {
@@ -9,13 +9,18 @@ const resolve = (dir) => {
 }
 
 module.exports = withCSS(withLess({
-    webpack: (config) => {
+    webpack: (config, { webpack }) => {
+        // 添加别名
         Object.assign(config.resolve.alias, {
             'styles': resolve('styles'),
             'components': resolve('components'),
             'api': resolve('api'),
             'types': resolve('types')
         });
+        config.plugins.push(new webpack.ContextReplacementPlugin(
+            /highlight\.js\/lib\/languages$/,
+            new RegExp(`^./(${['javascript', 'typescript', 'bash', 'basic', 'json'].join('|')})$`)
+        ));
         return config;
     },
     env: {
