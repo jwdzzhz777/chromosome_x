@@ -1,14 +1,14 @@
 import React from 'react';
 import { UserInfo } from 'types';
 import Link from 'next/link';
-import { Avatar, Container, Typography, Icon } from '@material-ui/core';
+import { Avatar, Container, Typography } from '@material-ui/core';
 import { GitHub, HomeRounded} from '@material-ui/icons';
 import 'styles/components/header.less';
 
 export default class Header extends React.Component<{viewer: UserInfo}, {avatar: string}> {
     constructor(props: {viewer: UserInfo}) {
         super(props);
-        this.state = {avatar: props.viewer ? props.viewer.a_s : ''}
+        this.state = {avatar: '/assets/avatar.jpeg'}
         this.toGithub = this.toGithub.bind(this);
     }
     componentDidMount() {
