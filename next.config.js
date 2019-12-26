@@ -4,11 +4,15 @@ const withCSS = require('@zeit/next-css')
 const path = require('path');
 const config = require('./config');
 
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
+
 const resolve = (dir) => {
     return path.join(__dirname, dir);
 }
 
-module.exports = withCSS(withLess({
+module.exports = withBundleAnalyzer(withCSS(withLess({
     webpack: (config, { webpack }) => {
         // 添加别名
         Object.assign(config.resolve.alias, {
@@ -26,4 +30,4 @@ module.exports = withCSS(withLess({
     env: {
         ...config[process.env.NODE_ENV]
     }
-}));
+})));
