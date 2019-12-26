@@ -25,6 +25,7 @@ module.exports = withBundleAnalyzer(withCSS(withLess({
             /highlight\.js\/lib\/languages$/,
             new RegExp(`^./(${['javascript', 'typescript', 'bash', 'basic', 'json'].join('|')})$`)
         ));
+        config.optimization.splitChunks && (config.optimization.splitChunks.cacheGroups.react.test = /[\\/]node_modules[\\/](react|react-dom|scheduler|use-subscription|@material-ui\/styles\/esm|@material-ui\/core\/esm\/styles)[\\/]/);
         return config;
     },
     env: {

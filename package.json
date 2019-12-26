@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "analyze": "ANALYZE=true yarn build"
+    "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
     "@material-ui/core": "^4.6.1",
