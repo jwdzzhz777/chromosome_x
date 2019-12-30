@@ -8,18 +8,7 @@ import 'styles/components/header.less';
 export default class Header extends React.Component<{viewer: UserInfo}, {avatar: string}> {
     constructor(props: {viewer: UserInfo}) {
         super(props);
-        this.state = {avatar: '/assets/avatar.jpeg'}
         this.toGithub = this.toGithub.bind(this);
-    }
-    componentDidMount() {
-        let { viewer } = this.props;
-        if (!viewer) return;
-
-        let img = new Image();
-        img.onload = () => {
-            this.setState({avatar: viewer.avatarUrl});
-        }
-        img.src = viewer.avatarUrl;
     }
     toGithub() {
         window.location.href = 'https://github.com/jwdzzhz777';
@@ -33,7 +22,7 @@ export default class Header extends React.Component<{viewer: UserInfo}, {avatar:
                     <GitHub onClick={this.toGithub} className="icon" color="action"/>
                 </Container>
                 <Container>
-                    <Avatar className="avatar" srcSet={this.state.avatar}></Avatar>
+                    <Avatar className="avatar" srcSet={`${process.env.CHROMOSOME_Y_HOST}/${viewer.avatarUrl}`}></Avatar>
                     {
                         viewer && <div className="info">
                             <Typography>{viewer.name}</Typography>
