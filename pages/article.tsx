@@ -7,7 +7,6 @@ import dynamic from 'next/dynamic';
 const Highlight: any = dynamic(() => import(
     /* webpackChunkName: "highlight" */
     /* webpackPrefetch: true */
-    /* webpackPreload: true */
     'react-highlight/lib/optimized'
 ));
 import marked from 'marked';
