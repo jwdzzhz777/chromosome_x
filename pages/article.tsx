@@ -4,7 +4,12 @@ import fetch, { ARTICLE } from 'api';
 import 'styles/pages/article.less';
 // import Highlight from 'react-highlight';
 import dynamic from 'next/dynamic';
-const Highlight: any = dynamic(() => import('react-highlight/lib/optimized'));
+const Highlight: any = dynamic(() => import(
+    /* webpackChunkName: "highlight" */
+    /* webpackPrefetch: true */
+    /* webpackPreload: true */
+    'react-highlight/lib/optimized'
+));
 import marked from 'marked';
 import 'github-markdown-css/github-markdown.css';
 
