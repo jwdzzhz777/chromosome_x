@@ -28,6 +28,9 @@ export default class Layout extends React.Component<{viewer?: UserInfo, error?: 
             });
         }
     }
+    clickHandler() {
+        location.href = 'http://www.beian.miit.gov.cn/'
+    }
     snakeClose() {
         this.setState({
             snakeBar: Object.assign({}, this.state.snakeBar, {show: false})
@@ -61,11 +64,28 @@ export default class Layout extends React.Component<{viewer?: UserInfo, error?: 
                     open={snakeBar.show}
                     message={snakeBar.message}
                 />
+                <div className="bt" onClick={this.clickHandler}>
+                    浙ICP备20002394号-1
+                </div>
                 <style jsx global>{`
                     @media (min-width: 600px) {
                         .MuiSnackbarContent-root {
                             min-width: initial!important;
                         }
+                    }
+                    #__next {
+                        padding-buttom: 40px;
+                    }
+                    div.bt {
+                        background: #fafafa;
+                        color: #999;
+                        position: fixed;
+                        bottom: 0;
+                        width: 100vw;
+                        height: 40px;
+                        line-height: 40px;
+                        text-align: center;
+                        cursor: pointer;
                     }
                 `}</style>
             </ThemeProvider>
