@@ -6,7 +6,7 @@ import 'styles/pages/article.less';
 import dynamic from 'next/dynamic';
 const Highlight: any = dynamic(() => import(
     /* webpackChunkName: "highlight" */
-    /* webpackPrefetch: true */
+    /* webpackPreload: true */
     'react-highlight/lib/optimized'
 ));
 import marked from 'marked';
@@ -21,7 +21,7 @@ const Article: NextPage<{ article: ArticleContext }> = ({ article }) => {
     const a = React.forwardRef((props: any, ref: any) => <article {...props} className="markdown-body" ref={ref}>{props.children}</article>);
     return (
         <div className="pg-article">
-            <Highlight languages={['javascript', 'typescript', 'bash', 'basic', 'json']} element={a} innerHTML>{marked(article.body)}</Highlight>
+            <Highlight languages={['javascript', 'typescript', 'bash', 'basic', 'json', 'html']} element={a} innerHTML>{marked(article.body)}</Highlight>
         </div>
     );
 }

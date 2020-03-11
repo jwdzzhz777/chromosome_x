@@ -19,7 +19,7 @@ module.exports = withCSS(withLess({
         });
         config.plugins.push(new webpack.ContextReplacementPlugin(
             /highlight\.js\/lib\/languages$/,
-            new RegExp(`^./(${['javascript', 'typescript', 'bash', 'basic', 'json'].join('|')})$`)
+            new RegExp(`^./(${['javascript', 'typescript', 'bash', 'basic', 'json', 'html'].join('|')})$`)
         ));
         config.optimization.splitChunks &&
         config.optimization.splitChunks.cacheGroups.react &&
